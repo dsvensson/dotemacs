@@ -466,7 +466,7 @@
 
 (use-package go-projectile
   :custom
-  (go-projectile-switch-gopath 'always)
+  (go-projectile-switch-gopath 'never)
   :config
   (mapc (lambda (tool)
           (add-to-list 'go-projectile-tools tool))
@@ -500,13 +500,9 @@
   (c-add-style "custom-go-style" custom-go-style)
   :hook
   (go-mode . flycheck-mode)
-  (go-mode . (lambda () (progn
-                          (go-projectile-tools-add-path)
-                          (go-projectile-set-gopath)
-                          (lsp))))
+  (go-mode . lsp)
   (before-save . gofmt-before-save)
   :custom
-  (go-guess-gopath-functions '((go-projectile-switch-project)))
   (gofmt-command "goreturns"))
                                         ;
 (use-package magit
