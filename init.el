@@ -418,7 +418,6 @@
 (use-package lsp-mode
   :custom
   (lsp-prefer-flymake nil)
-  (lsp-auto-guess-root t)
   :bind
   (:map lsp-mode-map
         ("C-c C-r" . lsp-rename)))
