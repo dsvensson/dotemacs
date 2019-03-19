@@ -354,7 +354,7 @@
 
      counsel-describe-variable
      (:columns
-      ((counsel-describe-variable-transformer (:width 40))
+      ((counsel-describe-variable-transformer (:width 50))
        (ivy-rich-counsel-variable-docstring   (:face font-lock-doc-face))))
 
      counsel-recentf
