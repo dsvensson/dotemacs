@@ -381,8 +381,7 @@
   (ivy-use-virtual-buffers t)
   (ivy-count-format "(%d/%d) ")
   (ivy-initial-inputs-alist nil)
-  (ivy-format-function 'ivy-format-function-line)
-  (ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
+  (ivy-format-function 'ivy-format-function-line))
 
 (use-package counsel-world-clock
   :commands
