@@ -334,9 +334,8 @@
         icon))))
 
 (use-package ivy-rich
-  :after (ivy all-the-icons)
   :hook
-  (ivy-mode . ivy-rich-mode)
+  (counsel-mode . ivy-rich-mode)
   :custom
   (ivy-rich-display-transformers-list
    '(ivy-switch-buffer
@@ -375,8 +374,8 @@
        (ivy-rich-counsel-projectile-switch-project-project-name (:width 40 :face success)))))))
 
 (use-package ivy
-  :init
-  (ivy-mode)
+  :hook
+  (after-init . ivy-mode)
   :custom
   (ivy-display-style 'fancy)
   (ivy-use-virtual-buffers t)
@@ -392,8 +391,8 @@
   (counsel-world-clock-time-format "%Y-%m-%d %H:%M (%/h)"))
 
 (use-package counsel
-  :init
-  (counsel-mode)
+  :hook
+  (ivy-mode . counsel-mode)
   :bind
   ([remap describe-face] . counsel-faces))
 
