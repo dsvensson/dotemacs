@@ -300,6 +300,12 @@
 
 (use-package flx)
 
+(use-package recentf
+  :custom
+  (recentf-case-fold-search t)
+  (recentf-max-saved-items 2000)
+  (recentf-save-file "~/.emacs.d/var/recentf.el"))
+
 (use-package prescient
   :config
   (prescient-persist-mode))
