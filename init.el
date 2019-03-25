@@ -307,12 +307,17 @@
   (recentf-save-file "~/.emacs.d/var/recentf.el"))
 
 (use-package prescient
+  :custom
+  (prescient-filter-method '(literal regexp initialism fuzzy))
+  (prescient-save-file "~/.emacs.d/var/prescient-save.el")
   :config
   (prescient-persist-mode))
 
 (use-package ivy-prescient
   :hook
-  (ivy-mode . ivy-prescient-mode))
+  (ivy-mode . ivy-prescient-mode)
+  :custom
+  (ivy-prescient-retain-classic-highlighting t))
 
 (use-package all-the-icons)
 
