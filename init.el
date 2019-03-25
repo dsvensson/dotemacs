@@ -325,10 +325,6 @@
   :hook
   (dired-mode . all-the-icons-dired-mode))
 
-(use-package all-the-icons-ivy
-  :config
-  (all-the-icons-ivy-setup))
-
 (defun ivy-rich-switch-buffer-icon (candidate)
   (with-current-buffer
       (get-buffer candidate)
