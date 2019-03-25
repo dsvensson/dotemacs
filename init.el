@@ -535,35 +535,26 @@
                        (add-to-list (make-local-variable 'company-backends)
                                     '(company-restclient)))))
 
-(defcustom pm-host/restclient
-  (pm-host-chunkmode :name "restclient-mode"
-                     :mode 'restclient-mode)
-  "restclient emacs lisp variables mode"
-  :group 'poly-hostmodes
-  :type 'object)
+(define-hostmode poly-restclient-hostmode
+  :mode 'restclient-mode)
 
-(defcustom pm-inner/restclient-emacs-lisp-single
-  (pm-inner-chunkmode :name "restclient-emacs-single-line"
-                      :head-matcher "^:[^ ]+ :="
-                      :tail-matcher "\n"
-                      :mode 'emacs-lisp-mode)
-  "Single line Emacs LISP."
-  :group 'poly-innermodes
-  :type 'object)
+(define-innermode poly-restclient-elisp-root-innermode
+  :mode 'emacs-lisp-mode
+  :head-mode 'host
+  :tail-mode 'host)
 
-(defcustom pm-inner/restclient-emacs-lisp-multi
-  (pm-inner-chunkmode :name "restclient-emacs-lisp-multi-line"
-                      :head-matcher "^:[^ ]+ := <<"
-                      :tail-matcher "^#$"
-                      :mode 'emacs-lisp-mode)
-  "Multi line Emacs LISP."
-  :group 'poly-innermodes
-  :type 'object)
+(define-innermode poly-restclient-elisp-single-innermode poly-restclient-elisp-root-innermode
+  :head-matcher "^:[^ ]+ :="
+  :tail-matcher "\n")
+
+(define-innermode poly-restclient-elisp-multi-innermode poly-restclient-elisp-root-innermode
+  :head-matcher "^:[^ ]+ := <<"
+  :tail-matcher "^#$")
 
 (define-polymode poly-restclient-mode
-  :hostmode 'pm-host/restclient
-  :innermodes '(pm-inner/restclient-emacs-lisp-single
-                pm-inner/restclient-emacs-lisp-multi))
+  :hostmode 'poly-restclient-hostmode
+  :innermodes '(poly-restclient-elisp-single-innermode
+                poly-restclient-elisp-multi-innermode))
 
 (use-package restclient
   :commands
