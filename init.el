@@ -513,7 +513,6 @@
 (use-package magit
   :custom
   (vc-handled-backends nil)
-  (magit-repository-directories '(("/Users/daniel/Development/netnod/ix" . 2)))
   :bind
   ("C-x g" . magit-status))
 
